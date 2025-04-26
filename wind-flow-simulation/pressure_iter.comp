@@ -1,0 +1,90 @@
+﻿// File: pressure_iter.comp
+#version 430
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+
+// 4->U*, 5->V*, 6->W*, 7->P′ in, 8->P′ out
+layout(std430, binding = 4) readonly  buffer UStarIn   { float uStar[];  };
+layout(std430, binding = 5) readonly  buffer VStarIn   { float vStar[];  };
+layout(std430, binding = 6) readonly  buffer WStarIn   { float wStar[];  };
+layout(std430, binding = 7) readonly  buffer PPrimeIn  { float pIn[];    };
+layout(std430, binding = 8) writeonly buffer PPrimeOut { float pOut[];   };
+layout(std430, binding = 9) readonly  buffer SolidMask { int   solidMask[]; };
+
+uniform float dx, dy, dz, dt;
+uniform float alphaP;  // pressure under-relaxation
+uniform int   Nx, Ny, Nz;
+
+uint idxU(uint i, uint j, uint k) { return k*Ny*(Nx+1) + j*(Nx+1) + i; }
+uint idxV(uint i, uint j, uint k) { return k*(Ny+1)*Nx   + j*Nx       + i; }
+uint idxW(uint i, uint j, uint k) { return k*(Ny  * Nx)  + j*Nx       + i; }
+uint idxP(uint i, uint j, uint k) { return k*(Ny  * Nx)  + j*Nx       + i; }
+
+void main() {
+    uvec3 gid = gl_GlobalInvocationID;
+    if (gid.x >= uint(Nx) || gid.y >= uint(Ny) || gid.z >= uint(Nz))
+    return;
+    uint i = gid.x, j = gid.y, k = gid.z;
+    uint pidx = idxP(i, j, k);
+
+    // Inlet face (i=0): FIXED pressure = 0 (Dirichlet)
+    if (i == 0u) {
+        pOut[pidx] = 0.0;
+        return;
+    }
+
+    if (i == uint(Nx-1)) {
+        pOut[pidx] = pIn[idxP(uint(Nx-2), j, k)];
+        return;
+    }
+    if (j == 0u) {
+        pOut[pidx] = pIn[idxP(i, 1u, k)];
+        return;
+    }
+    if (j == uint(Ny-1)) {
+        pOut[pidx] = pIn[idxP(i, uint(Ny-2), k)];
+        return;
+    }
+    if (k == 0u) {
+        pOut[pidx] = pIn[idxP(i, j, 1u)];
+        return;
+    }
+    if (k == uint(Nz-1)) {
+        pOut[pidx] = pIn[idxP(i, j, uint(Nz-2))];
+        return;
+    }
+
+    // Inside solid obstacle: preserve pressure
+    if (solidMask[pidx] == 1) {
+        pOut[pidx] = pIn[pidx];
+        return;
+    }
+
+    // Compute divergence of starred velocities
+    float div = 
+          (uStar[idxU(i+1u, j, k)] - uStar[idxU(i, j, k)])/dx
+        + (vStar[idxV(i, j+1u, k)] - vStar[idxV(i, j, k)])/dy
+        + (wStar[idxW(i, j, k+1u)] - wStar[idxW(i, j, k)])/dz;
+
+    // Neighbor pressures
+    uint e = idxP(i+1u, j, k), w = idxP(i-1u, j, k);
+    uint n = idxP(i, j+1u, k), s = idxP(i, j-1u, k);
+    uint t = idxP(i, j, k+1u), b = idxP(i, j, k-1u);
+
+    float pE = solidMask[e]==1 ? pIn[pidx] : pIn[e];
+    float pW = solidMask[w]==1 ? pIn[pidx] : pIn[w];
+    float pN = solidMask[n]==1 ? pIn[pidx] : pIn[n];
+    float pS = solidMask[s]==1 ? pIn[pidx] : pIn[s];
+    float pT = solidMask[t]==1 ? pIn[pidx] : pIn[t];
+    float pB = solidMask[b]==1 ? pIn[pidx] : pIn[b];
+
+    // Jacobi update
+    float aP = 2.0*(1.0/(dx*dx) + 1.0/(dy*dy) + 1.0/(dz*dz));
+    float newP = ((pE + pW)/(dx*dx)
+                + (pN + pS)/(dy*dy)
+                + (pT + pB)/(dz*dz)
+                - div/dt)
+               / aP;
+
+    // under-relax
+    pOut[pidx] = pIn[pidx] + alphaP * (newP - pIn[pidx]);
+}

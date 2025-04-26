@@ -1,0 +1,8 @@
+F:/Visual Studio Libraries/glm-master/build/CMakeFiles/uninstall.dir
+F:/Visual Studio Libraries/glm-master/build/CMakeFiles/PACKAGE.dir
+F:/Visual Studio Libraries/glm-master/build/CMakeFiles/INSTALL.dir
+F:/Visual Studio Libraries/glm-master/build/CMakeFiles/ALL_BUILD.dir
+F:/Visual Studio Libraries/glm-master/build/CMakeFiles/ZERO_CHECK.dir
+F:/Visual Studio Libraries/glm-master/build/glm/CMakeFiles/glm.dir
+F:/Visual Studio Libraries/glm-master/build/glm/CMakeFiles/PACKAGE.dir
+F:/Visual Studio Libraries/glm-master/build/glm/CMakeFiles/INSTALL.dir

@@ -1,0 +1,94 @@
+﻿#version 430
+layout(local_size_x=8,local_size_y=8,local_size_z=8) in;
+
+// bindings 0->U, 1->V, 2->W, 3->P, 4->U*
+layout(std430, binding=0) readonly  buffer UIn        { float u[];      };
+layout(std430, binding=1) readonly  buffer VIn        { float v[];      };
+layout(std430, binding=2) readonly  buffer WIn        { float w[];      };
+layout(std430, binding=3) readonly  buffer PIn        { float p[];      };
+layout(std430, binding=4) writeonly buffer UStarOut  { float uStar[];  };
+layout(std430, binding=9) readonly  buffer SolidMask { int   solidMask[]; };
+
+uniform float dx, dy, dz, dt, Re;
+uniform int   Nx, Ny, Nz;
+
+uniform float alphaU;     // velocity under-relaxation
+uniform float inletScale; // ramp factor (0->1)
+
+uint idxU(uint i, uint j, uint k) { return k*Ny*(Nx+1) + j*(Nx+1) + i; }
+uint idxV(uint i, uint j, uint k) { return k*(Ny+1)*Nx   + j*Nx       + i; }
+uint idxW(uint i, uint j, uint k) { return k*(Ny  * Nx)  + j*Nx       + i; }
+uint idxP(uint i, uint j, uint k) { return k*(Ny  * Nx)  + j*Nx       + i; }
+
+// Smooth profile function, returns value between 0.0 and 1.0
+float smoothProfile(float r, float maxR) {
+    if (r >= maxR) return 0.0;
+    // Cosine profile: 1.0 at center, smoothly decreases to 0.0 at edges
+    return 0.5 * (1.0 + cos(3.14159 * r / maxR));
+}
+
+void main() {
+    uvec3 gid = gl_GlobalInvocationID;
+    uint i = gid.x, j = gid.y, k = gid.z;
+    
+    // Inlet face (i=0): a smooth velocity profile for the inlet jet
+    if (i == 0u) {
+        uint j0 = uint((Ny - 20) / 2);
+        uint k0 = uint((Nz - 20) / 2);
+        
+        // Calculate distance from jet center
+        float jCenter = float(j0) + 10.0;
+        float kCenter = float(k0) + 10.0;
+        float jDist = abs(float(j) - jCenter);
+        float kDist = abs(float(k) - kCenter);
+        float radius = sqrt(jDist*jDist + kDist*kDist);
+        
+        // Smooth profile with maximum radius of 14.14 (sqrt(2)*10)
+        float profileFactor = smoothProfile(radius, 14.14);
+        
+        // Apply smooth velocity profile
+        uStar[idxU(0u, j, k)] = inletScale * profileFactor;
+        return;
+    }
+    
+    // Obstacle cells -> zero
+    if (i > 0u && i <= uint(Nx) && j < uint(Ny) && k < uint(Nz)) {
+        if (solidMask[idxP(i-1u, j, k)] == 1 
+         || solidMask[idxP(i,   j, k)] == 1) {
+            uStar[idxU(i, j, k)] = 0.0;
+            return;
+        }
+    }
+    
+    // Interior momentum‐prediction
+    if (i > 0u && i < uint(Nx) && j < uint(Ny) && k < uint(Nz)) {
+        float uC = u[idxU(i,j,k)];
+        float uE = u[idxU(i+1,j,k)];
+        float uW = u[idxU(i-1,j,k)];
+        float uN = u[idxU(i,j+1,k)];
+        float uS = u[idxU(i,j-1,k)];
+        float uT = u[idxU(i,j,k+1)];
+        float uB = u[idxU(i,j,k-1)];
+        float vF = 0.5 * (v[idxV(i,j,k)] + v[idxV(i,j+1,k)]);
+        float wF = 0.5 * (w[idxW(i,j,k)] + w[idxW(i,j,k+1)]);
+        float conv = 0.5*(uC+uE)*(uE-uC)/dx
+                   + vF*(uN-uS)/(2.0*dy)
+                   + wF*(uT-uB)/(2.0*dz);
+        float diff = (uE-2.0*uC+uW)/(dx*dx)
+                   + (uN-2.0*uC+uS)/(dy*dy)
+                   + (uT-2.0*uC+uB)/(dz*dz);
+        float dpdx = (p[idxP(i,j,k)] - p[idxP(i-1,j,k)])/dx;
+        float uRaw = uC + dt * (-conv + diff/Re - dpdx);
+        uStar[idxU(i,j,k)] = uC + alphaU * (uRaw - uC);
+        return;
+    }
+    
+    // Outlet (i = Nx): zero‐gradient
+    if (i == uint(Nx) && j < uint(Ny) && k < uint(Nz)) {
+        uStar[idxU(i,j,k)] = u[idxU(i-1u,j,k)];
+        return;
+    }
+    
+    // All other boundary cells (walls etc) = no-slip/zero
+    uStar[idxU(i,j,k)] = 0.0;
+}

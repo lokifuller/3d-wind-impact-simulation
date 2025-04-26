@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="F:\Visual Studio Libraries\glew-2.2.0\build\cmake\build\CMakeFiles\4f19f927169295b6017070cc4c58e3e4\uninstall.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="F:\Visual Studio Libraries\glew-2.2.0\build\cmake\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="F:\Visual Studio Libraries\glew-2.2.0\build\cmake\build\CMakeFiles\uninstall" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{4F921792-F147-357B-BF31-AB4558DC705A}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

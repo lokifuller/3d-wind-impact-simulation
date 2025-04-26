@@ -1,0 +1,71 @@
+﻿#version 430
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+
+// 5->V*, 7->P′ in, 1->V out
+layout(std430, binding = 5) readonly  buffer VStarIn   { float vStar[];  };
+layout(std430, binding = 7) readonly  buffer PPrimeIn  { float pPrime[]; };
+layout(std430, binding = 1) writeonly buffer VOut       { float v[];      };
+layout(std430, binding = 9) readonly  buffer SolidMask { int   solidMask[]; };
+
+uniform float dy, dt;
+uniform int   Nx, Ny, Nz;
+
+uint idxV(uint i, uint j, uint k) { return k*(Ny+1)*Nx + j*Nx + i; }
+uint idxP(uint i, uint j, uint k) { return k*Ny*Nx     + j*Nx + i; }
+
+void main() {
+    uvec3 gid = gl_GlobalInvocationID;
+    uint i = gid.x, j = gid.y, k = gid.z;
+
+    if (i >= uint(Nx) || j > uint(Ny) || k >= uint(Nz)) {
+        // nothing to do here
+        return;
+    }
+
+    // Obstacle on v-faces
+    if (i < uint(Nx) && j>0u && j<=uint(Ny) && k<uint(Nz)) {
+        if (solidMask[idxP(i, j-1, k)]==1 ||
+            solidMask[idxP(i,   j, k)]==1) {
+            v[idxV(i,j,k)] = 0.0;
+            return;
+        }
+    }
+
+    // Interior pressure-correction
+    if (i<uint(Nx) && j>0u && j<uint(Ny) && k<uint(Nz)) {
+        float dpdy = (pPrime[idxP(i,j,k)] - pPrime[idxP(i,j-1u,k)])/dy;
+        v[idxV(i,j,k)] = vStar[idxV(i,j,k)] - dt*dpdy;
+        return;
+    }
+
+    // Outflow x=0
+    if (i==0u) {
+        v[idxV(0u,j,k)] = vStar[idxV(1u,j,k)];
+        return;
+    }
+    // and x=Nx
+    if (i==uint(Nx)) {
+        v[idxV(uint(Nx),j,k)] = vStar[idxV(uint(Nx)-1u,j,k)];
+        return;
+    }
+
+    // Free-slip y = 0, Ny
+    if (j==0u) {
+        v[idxV(i,0u,k)] = vStar[idxV(i,1u,k)];
+        return;
+    }
+    if (j==uint(Ny)) {
+        v[idxV(i,uint(Ny),k)] = vStar[idxV(i,uint(Ny)-1u,k)];
+        return;
+    }
+
+    // Free-slip z = 0, Nz-1
+    if (k==0u) {
+        v[idxV(i,j,0u)] = vStar[idxV(i,j,1u)];
+        return;
+    }
+    if (k==uint(Nz-1u)) {
+        v[idxV(i,j,uint(Nz-1u))] = vStar[idxV(i,j,uint(Nz-2u))];
+        return;
+    }
+}

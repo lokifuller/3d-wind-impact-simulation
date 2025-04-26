@@ -1,0 +1,69 @@
+﻿#version 430
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+
+// 6->W*, 7->P′ in, 2->W out
+layout(std430, binding = 6) readonly  buffer WStarIn   { float wStar[];  };
+layout(std430, binding = 7) readonly  buffer PPrimeIn  { float pPrime[]; };
+layout(std430, binding = 2) writeonly buffer WOut       { float w[];      };
+layout(std430, binding = 9) readonly  buffer SolidMask { int   solidMask[]; };
+
+uniform float dz, dt;
+uniform int   Nx, Ny, Nz;
+
+uint idxW(uint i, uint j, uint k) { return k*Ny*Nx + j*Nx + i; }
+uint idxP(uint i, uint j, uint k) { return k*Ny*Nx + j*Nx + i; }
+
+void main() {
+    uvec3 gid = gl_GlobalInvocationID;
+    uint i = gid.x, j = gid.y, k = gid.z;
+
+   if (i >= uint(Nx) || j >= uint(Ny) || k > uint(Nz)) {
+       return;
+   }
+
+    // Obstacle on w-faces
+    if (i<uint(Nx) && j<uint(Ny) && k>0u && k<=uint(Nz)) {
+        if (solidMask[idxP(i,j,k-1)]==1 ||
+            solidMask[idxP(i,j,  k)]==1) {
+            w[idxW(i,j,k)] = 0.0;
+            return;
+        }
+    }
+
+    // Interior pressure-correction
+    if (i<uint(Nx) && j<uint(Ny) && k>0u && k<uint(Nz)) {
+        float dpdz = (pPrime[idxP(i,j,k)] - pPrime[idxP(i,j,k-1u)])/dz;
+        w[idxW(i,j,k)] = wStar[idxW(i,j,k)] - dt*dpdz;
+        return;
+    }
+
+    // Outflow x = 0, x = Nx-1
+    if (i==0u) {
+        w[idxW(0u,j,k)] = wStar[idxW(1u,j,k)];
+        return;
+    }
+    if (i==uint(Nx-1u)) {
+        w[idxW(uint(Nx-1u),j,k)] = wStar[idxW(uint(Nx-2u),j,k)];
+        return;
+    }
+
+    // Free-slip y/faces
+    if (j==0u) {
+        w[idxW(i,0u,k)] = wStar[idxW(i,1u,k)];
+        return;
+    }
+    if (j==uint(Ny-1u)) {
+        w[idxW(i,uint(Ny-1u),k)] = wStar[idxW(i,uint(Ny-2u),k)];
+        return;
+    }
+
+    // Free-slip z/faces
+    if (k==0u) {
+        w[idxW(i,j,0u)] = wStar[idxW(i,j,1u)];
+        return;
+    }
+    if (k==uint(Nz)) {
+        w[idxW(i,j,uint(Nz))] = wStar[idxW(i,j,uint(Nz-1u))];
+        return;
+    }
+}

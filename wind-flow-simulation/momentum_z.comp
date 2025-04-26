@@ -1,0 +1,62 @@
+﻿#version 430
+layout(local_size_x=8,local_size_y=8,local_size_z=8) in;
+
+// bindings 0->U 1->V 2->W 3->P 6->W*
+layout(std430, binding=0) readonly  buffer UIn        { float u[];     };
+layout(std430, binding=1) readonly  buffer VIn        { float v[];     };
+layout(std430, binding=2) readonly  buffer WIn        { float w[];     };
+layout(std430, binding=3) readonly  buffer PIn        { float p[];     };
+layout(std430, binding=6) writeonly buffer WStarOut  { float wStar[]; };
+layout(std430, binding=9) readonly  buffer SolidMask { int   solidMask[]; };
+
+uniform float dx, dy, dz, dt, Re, alphaU;
+uniform int   Nx, Ny, Nz;
+
+uint idxU(uint i,uint j,uint k){return k*Ny*(Nx+1u)+j*(Nx+1u)+i;}
+uint idxV(uint i,uint j,uint k){return k*(Ny+1u)*Nx   +j*Nx       +i;}
+uint idxW(uint i,uint j,uint k){return k*(Ny*Nx)     +j*Nx       +i;}
+uint idxP(uint i,uint j,uint k){return k*(Ny*Nx)     +j*Nx       +i;}
+
+void main(){
+    uvec3 gid=gl_GlobalInvocationID;
+    uint i=gid.x,j=gid.y,k=gid.z;
+
+    // Inlet: w=0
+    if(i==0u){
+        wStar[idxW(i,j,k)] = 0.0;
+        return;
+    }
+
+    // Obstacle -> zero
+    if(i<uint(Nx)&& j<uint(Ny)&& k>0u&& k<=uint(Nz)){
+        if(solidMask[idxP(i,j,k-1)]==1||solidMask[idxP(i,j,k)]==1){
+            wStar[idxW(i,j,k)] = 0.0;
+            return;
+        }
+    }
+
+    // Interior prediction
+    if(i<uint(Nx)&& j<uint(Ny)&& k>0u&& k<uint(Nz)){
+        float dpdz = (p[idxP(i,j,k)] - p[idxP(i,j,k-1)])/dz;
+        float uF = 0.5*(u[idxU(i,j,k)] + u[idxU(i,j,k+1)]);
+        float vF = 0.5*(v[idxV(i,j,k)] + v[idxV(i+1,j,k)]);
+        float conv = uF*(w[idxW(i+1,j,k)]-w[idxW(i-1,j,k)])/(2.0*dx)
+                   + vF*(w[idxW(i,j+1,k)]-w[idxW(i,j-1,k)])/(2.0*dy)
+                   + 0.5*(w[idxW(i,j,k)]+w[idxW(i,j,k+1)])*(w[idxW(i,j,k+1)]-w[idxW(i,j,k)])/dz;
+        float diff = (w[idxW(i+1,j,k)]-2.0*w[idxW(i,j,k)]+w[idxW(i-1,j,k)])/(dx*dx)
+                   + (w[idxW(i,j+1,k)]-2.0*w[idxW(i,j,k)]+w[idxW(i,j-1,k)])/(dy*dy)
+                   + (w[idxW(i,j,k+1)]-2.0*w[idxW(i,j,k)]+w[idxW(i,j,k-1)])/(dz*dz);
+        float wRaw = w[idxW(i,j,k)] + dt*(-conv + diff/Re - dpdz);
+        wStar[idxW(i,j,k)] = w[idxW(i,j,k)] + alphaU*(wRaw - w[idxW(i,j,k)]);
+        return;
+    }
+
+    // Outlet zero‐gradient
+    if(i==uint(Nx)){
+        wStar[idxW(i,j,k)] = w[idxW(i-1u,j,k)];
+        return;
+    }
+
+    // Else -> zero
+    wStar[idxW(i,j,k)] = 0.0;
+}

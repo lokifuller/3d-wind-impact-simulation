@@ -1,0 +1,82 @@
+﻿#version 430
+layout(local_size_x=8,local_size_y=8,local_size_z=8) in;
+
+// bindings 4->U*, 7->P′ in, 0->U out
+layout(std430, binding=4) readonly  buffer UStarIn   { float uStar[];  };
+layout(std430, binding=7) readonly  buffer PPrimeIn  { float pPrime[]; };
+layout(std430, binding=0) writeonly buffer UOut      { float u[];      };
+
+uniform float dx, dt;
+uniform int   Nx, Ny, Nz;
+
+uint idxU(uint i, uint j, uint k) { return k*uint(Ny)*(uint(Nx)+1u) + j*(uint(Nx)+1u) + i; }
+uint idxP(uint i, uint j, uint k) { return k*uint(Ny)*uint(Nx) + j*uint(Nx) + i; }
+
+// Smooth profile function, returns value between 0.0 and 1.0
+float smoothProfile(float r, float maxR) {
+    if (r >= maxR) return 0.0;
+    // Cosine profile: 1.0 at center, smoothly decreases to 0.0 at edges
+    return 0.5 * (1.0 + cos(3.14159 * r / maxR));
+}
+
+void main() {
+    uvec3 gid = gl_GlobalInvocationID;
+    uint i = gid.x, j = gid.y, k = gid.z;
+
+    if (i > uint(Nx) || j >= uint(Ny) || k >= uint(Nz)) {
+        return;
+    }
+    
+    // Interior pressure-correction
+    if (i > 0u && i < uint(Nx) && j < uint(Ny) && k < uint(Nz)) {
+        float dpdx = (pPrime[idxP(i,j,k)] - pPrime[idxP(i-1u,j,k)]) / dx;
+        u[idxU(i,j,k)] = uStar[idxU(i,j,k)] - dt * dpdx;
+        return;
+    }
+    
+    // Inlet jet at i = 0 with smooth profile
+    if (i == 0u) {
+        uint j0 = uint((Ny - 20) / 2);
+        uint k0 = uint((Nz - 20) / 2);
+        
+        float jCenter = float(j0) + 10.0;
+        float kCenter = float(k0) + 10.0;
+        float jDist = abs(float(j) - jCenter);
+        float kDist = abs(float(k) - kCenter);
+        float radius = sqrt(jDist*jDist + kDist*kDist);
+        
+        float profileFactor = smoothProfile(radius, 14.14);
+        
+        u[idxU(0u,j,k)] = profileFactor;
+        return;
+    }
+    
+    // Outlet at i = Nx, zero‐gradient from starred
+    if (i == uint(Nx) && j < uint(Ny) && k < uint(Nz)) {
+        u[idxU(i,j,k)] = uStar[idxU(i-1u,j,k)];
+        return;
+    }
+    
+    // Free‐slip on y‐faces
+    if (j == 0u) {
+        u[idxU(i,0u,k)] = uStar[idxU(i,1u,k)];
+        return;
+    }
+    if (j == uint(Ny-1u)) {
+        u[idxU(i,uint(Ny-1u),k)] = uStar[idxU(i,uint(Ny-2u),k)];
+        return;
+    }
+    
+    // 5) Free‐slip on z‐faces
+    if (k == 0u) {
+        u[idxU(i,j,0u)] = uStar[idxU(i,j,1u)];
+        return;
+    }
+    if (k == uint(Nz-1u)) {
+        u[idxU(i,j,uint(Nz-1u))] = uStar[idxU(i,j,uint(Nz-2u))];
+        return;
+    }
+    
+    // Everything else (walls etc) → zero
+    u[idxU(i,j,k)] = 0.0;
+}

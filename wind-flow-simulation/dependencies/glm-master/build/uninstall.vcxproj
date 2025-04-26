@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|x64">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|x64">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C6C1912B-B1B0-3FBF-AEE3-CA68CCB93C92}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
+    <Platform>x64</Platform>
+    <ProjectName>uninstall</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
+    <ConfigurationType>Utility</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v143</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
+    <Midl>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Visual Studio Libraries\glm-master\build\CMakeFiles\570e338dd439f5ee6d16dd860532c70a\uninstall.rule">
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+F:\bin\cmake.exe -P "F:/Visual Studio Libraries/glm-master/build/cmake_uninstall.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\uninstall</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+F:\bin\cmake.exe -P "F:/Visual Studio Libraries/glm-master/build/cmake_uninstall.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\uninstall</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+F:\bin\cmake.exe -P "F:/Visual Studio Libraries/glm-master/build/cmake_uninstall.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\uninstall</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</VerifyInputsAndOutputsExist>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'"></Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+F:\bin\cmake.exe -P "F:/Visual Studio Libraries/glm-master/build/cmake_uninstall.cmake"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\uninstall</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+      <VerifyInputsAndOutputsExist Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</VerifyInputsAndOutputsExist>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Visual Studio Libraries\glm-master\CMakeLists.txt">
+      <UseUtf8Encoding>Always</UseUtf8Encoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Building Custom Rule F:/Visual Studio Libraries/glm-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">setlocal
+F:\bin\cmake.exe "-SF:/Visual Studio Libraries/glm-master" "-BF:/Visual Studio Libraries/glm-master/build" --check-stamp-file "F:/Visual Studio Libraries/glm-master/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeCXXCompiler.cmake;F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeRCCompiler.cmake;F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeSystem.cmake;F:\Visual Studio Libraries\glm-master\cmake\cmake_uninstall.cmake.in;F:\share\cmake-3.31\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;F:\share\cmake-3.31\Modules\CMakeCXXCompiler.cmake.in;F:\share\cmake-3.31\Modules\CMakeCXXCompilerABI.cpp;F:\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;F:\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;F:\share\cmake-3.31\Modules\CMakeCompilerIdDetection.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCXXCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerABI.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerId.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerSupport.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineRCCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineSystem.cmake;F:\share\cmake-3.31\Modules\CMakeFindBinUtils.cmake;F:\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;F:\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;F:\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;F:\share\cmake-3.31\Modules\CMakePackageConfigHelpers.cmake;F:\share\cmake-3.31\Modules\CMakeParseImplicitIncludeInfo.cmake;F:\share\cmake-3.31\Modules\CMakeParseImplicitLinkInfo.cmake;F:\share\cmake-3.31\Modules\CMakeParseLibraryArchitecture.cmake;F:\share\cmake-3.31\Modules\CMakeRCCompiler.cmake.in;F:\share\cmake-3.31\Modules\CMakeRCInformation.cmake;F:\share\cmake-3.31\Modules\CMakeSystem.cmake.in;F:\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;F:\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;F:\share\cmake-3.31\Modules\CMakeTestCXXCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeTestCompilerCommon.cmake;F:\share\cmake-3.31\Modules\CMakeTestRCCompiler.cmake;F:\share\cmake-3.31\Modules\CPack.cmake;F:\share\cmake-3.31\Modules\CPackComponent.cmake;F:\share\cmake-3.31\Modules\Compiler\ADSP-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\ARMCC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\ARMClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\AppleClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Borland-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;F:\share\cmake-3.31\Modules\Compiler\Clang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;F:\share\cmake-3.31\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Cray-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\CrayClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\GHS-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IAR-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;F:\share\cmake-3.31\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Intel-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC.cmake;F:\share\cmake-3.31\Modules\Compiler\NVHPC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\OrangeC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\PGI-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\PathScale-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\SCO-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\TI-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\TIClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Tasking-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Watcom-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\CompilerId\VS-10.vcxproj.in;F:\share\cmake-3.31\Modules\GNUInstallDirs.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeDetermineLinkerId.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeRCLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\FeatureTesting.cmake;F:\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-Determine-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;F:\share\cmake-3.31\Modules\Platform\Windows.cmake;F:\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;F:\share\cmake-3.31\Modules\WriteBasicConfigVersionFile.cmake;F:\share\cmake-3.31\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Building Custom Rule F:/Visual Studio Libraries/glm-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">setlocal
+F:\bin\cmake.exe "-SF:/Visual Studio Libraries/glm-master" "-BF:/Visual Studio Libraries/glm-master/build" --check-stamp-file "F:/Visual Studio Libraries/glm-master/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeCXXCompiler.cmake;F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeRCCompiler.cmake;F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeSystem.cmake;F:\Visual Studio Libraries\glm-master\cmake\cmake_uninstall.cmake.in;F:\share\cmake-3.31\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;F:\share\cmake-3.31\Modules\CMakeCXXCompiler.cmake.in;F:\share\cmake-3.31\Modules\CMakeCXXCompilerABI.cpp;F:\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;F:\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;F:\share\cmake-3.31\Modules\CMakeCompilerIdDetection.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCXXCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerABI.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerId.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerSupport.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineRCCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineSystem.cmake;F:\share\cmake-3.31\Modules\CMakeFindBinUtils.cmake;F:\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;F:\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;F:\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;F:\share\cmake-3.31\Modules\CMakePackageConfigHelpers.cmake;F:\share\cmake-3.31\Modules\CMakeParseImplicitIncludeInfo.cmake;F:\share\cmake-3.31\Modules\CMakeParseImplicitLinkInfo.cmake;F:\share\cmake-3.31\Modules\CMakeParseLibraryArchitecture.cmake;F:\share\cmake-3.31\Modules\CMakeRCCompiler.cmake.in;F:\share\cmake-3.31\Modules\CMakeRCInformation.cmake;F:\share\cmake-3.31\Modules\CMakeSystem.cmake.in;F:\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;F:\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;F:\share\cmake-3.31\Modules\CMakeTestCXXCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeTestCompilerCommon.cmake;F:\share\cmake-3.31\Modules\CMakeTestRCCompiler.cmake;F:\share\cmake-3.31\Modules\CPack.cmake;F:\share\cmake-3.31\Modules\CPackComponent.cmake;F:\share\cmake-3.31\Modules\Compiler\ADSP-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\ARMCC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\ARMClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\AppleClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Borland-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;F:\share\cmake-3.31\Modules\Compiler\Clang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;F:\share\cmake-3.31\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Cray-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\CrayClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\GHS-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IAR-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;F:\share\cmake-3.31\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Intel-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC.cmake;F:\share\cmake-3.31\Modules\Compiler\NVHPC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\OrangeC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\PGI-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\PathScale-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\SCO-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\TI-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\TIClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Tasking-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Watcom-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\CompilerId\VS-10.vcxproj.in;F:\share\cmake-3.31\Modules\GNUInstallDirs.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeDetermineLinkerId.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeRCLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\FeatureTesting.cmake;F:\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-Determine-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;F:\share\cmake-3.31\Modules\Platform\Windows.cmake;F:\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;F:\share\cmake-3.31\Modules\WriteBasicConfigVersionFile.cmake;F:\share\cmake-3.31\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">Building Custom Rule F:/Visual Studio Libraries/glm-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">setlocal
+F:\bin\cmake.exe "-SF:/Visual Studio Libraries/glm-master" "-BF:/Visual Studio Libraries/glm-master/build" --check-stamp-file "F:/Visual Studio Libraries/glm-master/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeCXXCompiler.cmake;F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeRCCompiler.cmake;F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeSystem.cmake;F:\Visual Studio Libraries\glm-master\cmake\cmake_uninstall.cmake.in;F:\share\cmake-3.31\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;F:\share\cmake-3.31\Modules\CMakeCXXCompiler.cmake.in;F:\share\cmake-3.31\Modules\CMakeCXXCompilerABI.cpp;F:\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;F:\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;F:\share\cmake-3.31\Modules\CMakeCompilerIdDetection.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCXXCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerABI.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerId.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerSupport.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineRCCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineSystem.cmake;F:\share\cmake-3.31\Modules\CMakeFindBinUtils.cmake;F:\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;F:\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;F:\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;F:\share\cmake-3.31\Modules\CMakePackageConfigHelpers.cmake;F:\share\cmake-3.31\Modules\CMakeParseImplicitIncludeInfo.cmake;F:\share\cmake-3.31\Modules\CMakeParseImplicitLinkInfo.cmake;F:\share\cmake-3.31\Modules\CMakeParseLibraryArchitecture.cmake;F:\share\cmake-3.31\Modules\CMakeRCCompiler.cmake.in;F:\share\cmake-3.31\Modules\CMakeRCInformation.cmake;F:\share\cmake-3.31\Modules\CMakeSystem.cmake.in;F:\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;F:\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;F:\share\cmake-3.31\Modules\CMakeTestCXXCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeTestCompilerCommon.cmake;F:\share\cmake-3.31\Modules\CMakeTestRCCompiler.cmake;F:\share\cmake-3.31\Modules\CPack.cmake;F:\share\cmake-3.31\Modules\CPackComponent.cmake;F:\share\cmake-3.31\Modules\Compiler\ADSP-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\ARMCC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\ARMClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\AppleClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Borland-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;F:\share\cmake-3.31\Modules\Compiler\Clang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;F:\share\cmake-3.31\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Cray-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\CrayClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\GHS-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IAR-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;F:\share\cmake-3.31\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Intel-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC.cmake;F:\share\cmake-3.31\Modules\Compiler\NVHPC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\OrangeC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\PGI-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\PathScale-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\SCO-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\TI-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\TIClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Tasking-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Watcom-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\CompilerId\VS-10.vcxproj.in;F:\share\cmake-3.31\Modules\GNUInstallDirs.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeDetermineLinkerId.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeRCLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\FeatureTesting.cmake;F:\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-Determine-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;F:\share\cmake-3.31\Modules\Platform\Windows.cmake;F:\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;F:\share\cmake-3.31\Modules\WriteBasicConfigVersionFile.cmake;F:\share\cmake-3.31\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">Building Custom Rule F:/Visual Studio Libraries/glm-master/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">setlocal
+F:\bin\cmake.exe "-SF:/Visual Studio Libraries/glm-master" "-BF:/Visual Studio Libraries/glm-master/build" --check-stamp-file "F:/Visual Studio Libraries/glm-master/build/CMakeFiles/generate.stamp"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeCXXCompiler.cmake;F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeRCCompiler.cmake;F:\Visual Studio Libraries\glm-master\build\CMakeFiles\3.31.0-rc2\CMakeSystem.cmake;F:\Visual Studio Libraries\glm-master\cmake\cmake_uninstall.cmake.in;F:\share\cmake-3.31\Modules\BasicConfigVersion-AnyNewerVersion.cmake.in;F:\share\cmake-3.31\Modules\CMakeCXXCompiler.cmake.in;F:\share\cmake-3.31\Modules\CMakeCXXCompilerABI.cpp;F:\share\cmake-3.31\Modules\CMakeCXXInformation.cmake;F:\share\cmake-3.31\Modules\CMakeCommonLanguageInclude.cmake;F:\share\cmake-3.31\Modules\CMakeCompilerIdDetection.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCXXCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerABI.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerId.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineCompilerSupport.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineRCCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeDetermineSystem.cmake;F:\share\cmake-3.31\Modules\CMakeFindBinUtils.cmake;F:\share\cmake-3.31\Modules\CMakeGenericSystem.cmake;F:\share\cmake-3.31\Modules\CMakeInitializeConfigs.cmake;F:\share\cmake-3.31\Modules\CMakeLanguageInformation.cmake;F:\share\cmake-3.31\Modules\CMakePackageConfigHelpers.cmake;F:\share\cmake-3.31\Modules\CMakeParseImplicitIncludeInfo.cmake;F:\share\cmake-3.31\Modules\CMakeParseImplicitLinkInfo.cmake;F:\share\cmake-3.31\Modules\CMakeParseLibraryArchitecture.cmake;F:\share\cmake-3.31\Modules\CMakeRCCompiler.cmake.in;F:\share\cmake-3.31\Modules\CMakeRCInformation.cmake;F:\share\cmake-3.31\Modules\CMakeSystem.cmake.in;F:\share\cmake-3.31\Modules\CMakeSystemSpecificInformation.cmake;F:\share\cmake-3.31\Modules\CMakeSystemSpecificInitialize.cmake;F:\share\cmake-3.31\Modules\CMakeTestCXXCompiler.cmake;F:\share\cmake-3.31\Modules\CMakeTestCompilerCommon.cmake;F:\share\cmake-3.31\Modules\CMakeTestRCCompiler.cmake;F:\share\cmake-3.31\Modules\CPack.cmake;F:\share\cmake-3.31\Modules\CPackComponent.cmake;F:\share\cmake-3.31\Modules\Compiler\ADSP-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\ARMCC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\ARMClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\AppleClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Borland-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\CMakeCommonCompilerMacros.cmake;F:\share\cmake-3.31\Modules\Compiler\Clang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Clang-DetermineCompilerInternal.cmake;F:\share\cmake-3.31\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Cray-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\CrayClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Embarcadero-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Fujitsu-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\GHS-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\HP-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IAR-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake;F:\share\cmake-3.31\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Intel-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\MSVC.cmake;F:\share\cmake-3.31\Modules\Compiler\NVHPC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\NVIDIA-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\OrangeC-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\PGI-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\PathScale-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\SCO-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\TI-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\TIClang-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Tasking-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\Watcom-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\XL-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake;F:\share\cmake-3.31\Modules\CompilerId\VS-10.vcxproj.in;F:\share\cmake-3.31\Modules\GNUInstallDirs.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeCXXLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeCommonLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeDetermineLinkerId.cmake;F:\share\cmake-3.31\Modules\Internal\CMakeRCLinkerInformation.cmake;F:\share\cmake-3.31\Modules\Internal\FeatureTesting.cmake;F:\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Linker\Windows-MSVC.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-Determine-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-Initialize.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-MSVC-CXX.cmake;F:\share\cmake-3.31\Modules\Platform\Windows-MSVC.cmake;F:\share\cmake-3.31\Modules\Platform\Windows.cmake;F:\share\cmake-3.31\Modules\Platform\WindowsPaths.cmake;F:\share\cmake-3.31\Modules\WriteBasicConfigVersionFile.cmake;F:\share\cmake-3.31\Templates\CPackConfig.cmake.in;%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">F:\Visual Studio Libraries\glm-master\build\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="F:\Visual Studio Libraries\glm-master\build\CMakeFiles\uninstall">
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="F:\Visual Studio Libraries\glm-master\build\ZERO_CHECK.vcxproj">
+      <Project>{1BE04638-0C4D-3850-B4C7-4652ACBE95FA}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
